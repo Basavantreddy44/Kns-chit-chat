@@ -1,0 +1,36 @@
+.social {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.social__divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-subtle);
+}
+
+.social__divider::before,
+.social__divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.social__buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+@media (max-width: 380px) {
+  .social__buttons {
+    grid-template-columns: 1fr;
+  }
+}

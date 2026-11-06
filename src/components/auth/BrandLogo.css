@@ -1,0 +1,28 @@
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.brand__mark {
+  flex-shrink: 0;
+}
+
+.brand__name {
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+}
+
+.brand__name strong {
+  font-weight: 800;
+}
+
+.brand--dark .brand__name {
+  color: var(--color-text);
+}
+
+.brand--light .brand__name {
+  color: #fff;
+}

@@ -1,0 +1,406 @@
+/*
+ * The layer floats above the workspace but only its cards take clicks. It sits below
+ * the page and chat headers, because at the bottom it would cover the message box.
+ */
+.call-layer {
+  position: fixed;
+  top: 128px;
+  right: var(--space-4);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-3);
+  width: min(360px, calc(100vw - 2 * var(--space-4)));
+  pointer-events: none;
+}
+
+.call-layer > * {
+  pointer-events: auto;
+}
+
+.incoming-call,
+.call-panel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  animation: fade-up var(--duration-base) var(--ease-out);
+}
+
+/* ---------- Incoming call ---------- */
+.incoming-call {
+  border-color: var(--color-primary);
+}
+
+.incoming-call__person,
+.call-panel__person {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* A gentle pulse says "this is live". Reduced-motion settings turn it off. */
+.incoming-call__avatar {
+  display: inline-flex;
+  border-radius: 50%;
+  animation: call-pulse 1.6s ease-out infinite;
+}
+
+@keyframes call-pulse {
+  from {
+    box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.55);
+  }
+  to {
+    box-shadow: 0 0 0 14px rgba(20, 184, 166, 0);
+  }
+}
+
+.incoming-call__name,
+.call-panel__name {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.incoming-call__error {
+  font-size: var(--text-xs);
+  color: var(--color-error-text);
+}
+
+.incoming-call__actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+
+.call-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  min-height: 40px;
+  padding: 0 var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  cursor: pointer;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  transition:
+    background-color var(--duration-fast) ease,
+    border-color var(--duration-fast) ease;
+}
+
+.call-action:hover:not(:disabled) {
+  background: var(--color-surface-muted);
+}
+
+.call-action:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+/* Darker than the palette's green and red, so white text stays readable. */
+.call-action--accept {
+  color: #fff;
+  background: #15803d;
+  border-color: #15803d;
+}
+
+.call-action--accept:hover:not(:disabled) {
+  background: #166534;
+}
+
+.call-action--reject {
+  color: #fff;
+  background: #b91c1c;
+  border-color: #b91c1c;
+}
+
+.call-action--reject:hover:not(:disabled) {
+  background: #991b1b;
+}
+
+/* ---------- Active call ---------- */
+.call-panel__status {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.call-panel__duration {
+  font-variant-numeric: tabular-nums;
+}
+
+.call-panel__sharing {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-success-text);
+}
+
+.call-controls {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.call-control {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  color: var(--color-text);
+  cursor: pointer;
+  background: var(--color-surface-muted);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 50%;
+  transition:
+    background-color var(--duration-fast) ease,
+    color var(--duration-fast) ease;
+}
+
+.call-control:hover {
+  background: var(--color-hover-overlay);
+}
+
+.call-control.is-on {
+  color: var(--color-error-text);
+  background: var(--color-error-soft);
+  border-color: var(--color-error-border);
+}
+
+.call-control:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.call-control.is-sharing {
+  color: #fff;
+  background: var(--color-control);
+  border-color: var(--color-control);
+}
+
+.call-control--end {
+  color: #fff;
+  background: #b91c1c;
+  border-color: #b91c1c;
+}
+
+.call-control--end:hover {
+  background: #991b1b;
+}
+
+.call-panel--ended {
+  flex-direction: row;
+  align-items: center;
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+/* ---------- Large view: video and shared screens ---------- */
+.call-stage {
+  position: fixed;
+  top: 60px;
+  right: 0;
+  bottom: 0;
+  left: 256px;
+  z-index: 35;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4) var(--space-4);
+  color: var(--color-text);
+  background: var(--color-surface);
+  animation: fade-up var(--duration-base) var(--ease-out);
+}
+
+.call-stage__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* Dark in both themes: video and screens read best against a dark surround. */
+.call-stage__main {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: #fff;
+  background: #0b1220;
+  border-radius: var(--radius-lg);
+}
+
+.call-stage__main .row__meta {
+  color: #cbd5e1;
+}
+
+.call-stage__placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 600;
+  text-align: center;
+}
+
+.call-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #0b1220;
+}
+
+/* A shared screen must never be cropped: people need to read all of it. */
+.call-video--screen {
+  object-fit: contain;
+}
+
+/* Your own camera behaves like a mirror. The other person sees it the right way round. */
+.call-video--mirror {
+  transform: scaleX(-1);
+}
+
+.call-stage__tiles {
+  position: absolute;
+  right: var(--space-3);
+  bottom: var(--space-3);
+  display: flex;
+  gap: var(--space-2);
+}
+
+.call-tile {
+  position: relative;
+  width: 200px;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #0b1220;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.call-tile__label,
+.call-stage__tag,
+.call-stage__muted {
+  position: absolute;
+  padding: 2px var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: #fff;
+  background: rgba(15, 23, 42, 0.8);
+  border-radius: var(--radius-sm);
+}
+
+.call-tile__label {
+  bottom: var(--space-1);
+  left: var(--space-1);
+}
+
+.call-stage__tag {
+  top: var(--space-3);
+  left: var(--space-3);
+}
+
+.call-stage__muted {
+  bottom: var(--space-3);
+  left: var(--space-3);
+}
+
+.call-stage__sharing {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-success-text);
+}
+
+.call-stage__notice {
+  font-size: var(--text-xs);
+  text-align: center;
+  color: var(--color-error-text);
+}
+
+/* ---------- Header buttons and history ---------- */
+.thread__header .icon-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.thread__header .icon-button.is-sharing {
+  color: #fff;
+  background: var(--color-control);
+}
+
+.call-button__error {
+  position: absolute;
+  top: 56px;
+  right: var(--space-4);
+  z-index: 16;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  max-width: min(360px, calc(100% - 2 * var(--space-4)));
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-xs);
+  color: var(--color-error-text);
+  background: var(--color-error-soft);
+  border: 1px solid var(--color-error-border);
+  border-radius: var(--radius-md);
+}
+
+.call-entry {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  margin: var(--space-3) 0;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .call-stage {
+    left: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .call-stage {
+    top: 0;
+    z-index: 45;
+    padding: var(--space-2) var(--space-2) var(--space-3);
+  }
+
+  .call-tile {
+    width: 110px;
+  }
+
+  .thread__header {
+    gap: 0;
+  }
+
+  .thread__header .icon-button {
+    width: 34px;
+  }
+
+  .call-layer {
+    top: 124px;
+    right: var(--space-2);
+    width: calc(100vw - 2 * var(--space-2));
+  }
+}

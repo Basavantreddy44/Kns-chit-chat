@@ -1,0 +1,47 @@
+/* Spacing is slightly tighter than the login form: there are more fields. */
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.register-form__status {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.register-form__status:empty {
+  display: none;
+}
+
+.register-form .btn[type='submit'] {
+  margin-top: var(--space-2);
+}
+
+.register-form__login {
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* Availability status icons inside the username/email inputs */
+.availability {
+  display: inline-flex;
+}
+
+.availability--checking {
+  color: var(--color-text-subtle);
+}
+
+.availability--checking svg {
+  animation: spin 0.8s linear infinite;
+}
+
+.availability--ok {
+  color: var(--color-success);
+}
+
+.availability--taken {
+  color: var(--color-error);
+}

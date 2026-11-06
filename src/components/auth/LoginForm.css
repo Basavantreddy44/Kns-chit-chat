@@ -1,0 +1,33 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.login-form__status {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.login-form__status:empty {
+  display: none;
+}
+
+.login-form__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.login-form__forgot {
+  font-size: var(--text-sm);
+}
+
+.login-form__signup {
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}

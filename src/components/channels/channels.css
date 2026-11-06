@@ -1,0 +1,293 @@
+.channel-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
+  border-radius: var(--radius-md);
+}
+
+.channel-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-1);
+  margin-top: var(--space-2);
+}
+
+.channel-row__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-top: var(--space-1);
+}
+
+.channel-row__description {
+  margin-top: 2px;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  overflow-wrap: anywhere;
+}
+
+.channel-textarea {
+  height: auto;
+  padding: var(--space-2) var(--space-3);
+  resize: vertical;
+}
+
+.channel-description {
+  font-size: var(--text-sm);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.channel-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.channel-actions .btn {
+  height: 34px;
+  padding: 0 var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.channel-members__title {
+  margin-bottom: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.channel-members {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.channel-member__top {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.channel-member__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+  margin: 2px 0 0 40px;
+  font-size: var(--text-xs);
+}
+
+.conversations__title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+/* ---------- Channel list on My Channels ---------- */
+.channel-group__title {
+  padding: var(--space-3) var(--space-4) var(--space-1);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.conversations__list .channel-invite {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  font-weight: 400;
+  color: var(--color-text);
+  background: var(--color-primary-soft);
+}
+
+.conversations__list .channel-invite:hover {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+/* ---------- Join and invitation cards ---------- */
+.channel-gate {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  overflow-y: auto;
+}
+
+.channel-gate__card {
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-6);
+  text-align: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.channel-gate__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+/* ---------- Create channel ---------- */
+.type-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.type-options legend {
+  margin-bottom: var(--space-2);
+  padding: 0;
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.type-option {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition:
+    border-color var(--duration-fast) ease,
+    background-color var(--duration-fast) ease;
+}
+
+.type-option:has(input:checked) {
+  background: var(--color-primary-soft);
+  border-color: var(--color-primary);
+}
+
+.type-option:has(input:focus-visible) {
+  box-shadow: var(--shadow-focus);
+}
+
+.type-option input {
+  margin-top: 3px;
+  accent-color: var(--color-control);
+}
+
+.type-option__title {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.create-channel .form-stack {
+  max-width: 560px;
+}
+
+/* ---------- Employee picker ---------- */
+.picker {
+  font-weight: 600;
+}
+
+.picker input {
+  font-weight: 400;
+}
+
+.picker__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.picker__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 2px 4px 2px 10px;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-text);
+  background: var(--color-primary-soft);
+  border-radius: var(--radius-full);
+}
+
+.picker__remove {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.picker__remove:hover {
+  background: var(--color-hover-overlay);
+}
+
+.picker__results {
+  max-height: 220px;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.picker__result {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  font: inherit;
+  font-weight: 400;
+  text-align: left;
+  color: var(--color-text);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.picker__result:hover,
+.picker__result[aria-pressed='true'] {
+  background: var(--color-surface-muted);
+}
+
+.picker__name {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 480px) {
+  .type-options {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

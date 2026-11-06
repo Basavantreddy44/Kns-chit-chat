@@ -1,0 +1,130 @@
+/* ==========================================================
+   KNS Chit-Chat design tokens — the single source of truth for
+   the design system. Change a value here and it updates everywhere.
+   ========================================================== */
+:root {
+  color-scheme: light;
+
+  /* Brand */
+  --color-brand: #17365d;
+  --color-brand-hover: #1f4677;
+  --color-primary: #2563eb; /* links, focus and active states */
+  --color-primary-hover: #1d4ed8;
+  --color-primary-soft: #eff6ff;
+  --color-control: #2563eb; /* filled controls that carry white marks */
+  --color-accent: #14b8a6; /* decorative only: white text on teal fails contrast */
+  --color-rail: #17365d;
+
+  /* Neutrals */
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f8fafc;
+  --color-border: #e2e8f0;
+  --color-border-strong: #cbd5e1;
+  --color-text: #1e293b;
+  --color-text-muted: #64748b;
+  --color-text-subtle: #64748b;
+
+  /* Feedback. The *-text shades stay readable at small sizes. */
+  --color-error: #dc2626;
+  --color-error-text: #b91c1c;
+  --color-error-soft: #fef2f2;
+  --color-error-border: #fecaca;
+  --color-success: #16a34a;
+  --color-success-text: #15803d;
+  --color-success-soft: #f0fdf4;
+  --color-success-border: #bbf7d0;
+  --color-info-text: #1d4ed8;
+  --color-info-soft: #eff6ff;
+  --color-info-border: #bfdbfe;
+  --color-warning: #b45309;
+  --color-warning-fill: #f59e0b;
+  --color-warning-soft: #fffbeb;
+  --color-warning-border: #fde68a;
+  --color-hover-overlay: rgba(15, 23, 42, 0.06);
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 0.9375rem;
+  --text-lg: 1.0625rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+
+  /* Spacing (4px grid) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+
+  /* Shape */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 999px;
+
+  /* Elevation */
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.12);
+  --shadow-focus: 0 0 0 3px rgba(37, 99, 235, 0.25);
+  --shadow-focus-error: 0 0 0 3px rgba(220, 38, 38, 0.2);
+  --shadow-focus-success: 0 0 0 3px rgba(22, 163, 74, 0.2);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 400ms;
+
+  /* Sizing */
+  --control-height: 44px;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-brand: #2563eb;
+  --color-brand-hover: #1d4ed8;
+  --color-primary: #60a5fa;
+  --color-primary-hover: #93c5fd;
+  --color-primary-soft: #1e3a5f;
+  --color-rail: #0b1220;
+
+  --color-bg: #0f172a;
+  --color-surface: #1e293b;
+  --color-surface-muted: #172033;
+  --color-border: #334155;
+  --color-border-strong: #475569;
+  --color-text: #f1f5f9;
+  --color-text-muted: #a3b1c6;
+  --color-text-subtle: #a3b1c6;
+
+  --color-error: #f87171;
+  --color-error-text: #fca5a5;
+  --color-error-soft: #3b1219;
+  --color-error-border: #7f1d1d;
+  --color-success: #4ade80;
+  --color-success-text: #86efac;
+  --color-success-soft: #052e1a;
+  --color-success-border: #14532d;
+  --color-info-text: #93c5fd;
+  --color-info-soft: #172554;
+  --color-info-border: #1e40af;
+  --color-warning: #fcd34d;
+  --color-warning-soft: #3a2a0a;
+  --color-warning-border: #78350f;
+  --color-hover-overlay: rgba(255, 255, 255, 0.08);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --shadow-focus: 0 0 0 3px rgba(96, 165, 250, 0.35);
+}

@@ -1,0 +1,17 @@
+.welcome__title {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.welcome__tagline {
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.welcome__account {
+  margin-top: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  overflow-wrap: anywhere;
+}

@@ -1,0 +1,7 @@
+project_id = "orbit-social"
+
+[functions.login-with-username]
+verify_jwt = false
+
+[functions.get-ice-servers]
+verify_jwt = false

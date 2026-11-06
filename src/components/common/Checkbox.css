@@ -1,0 +1,89 @@
+.checkbox-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  cursor: pointer;
+  user-select: none;
+  font-size: var(--text-sm);
+  line-height: 1.45;
+  color: var(--color-text-muted);
+}
+
+/* Hide the native box visually but keep it focusable */
+.checkbox__input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.checkbox__box {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: transparent;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border-strong);
+  border-radius: 6px;
+  transition:
+    background var(--duration-fast) ease,
+    border-color var(--duration-fast) ease,
+    color var(--duration-fast) ease,
+    box-shadow var(--duration-fast) ease;
+}
+
+.checkbox__label {
+  padding-top: 0;
+}
+
+.checkbox:hover .checkbox__box {
+  border-color: var(--color-primary);
+}
+
+.checkbox__input:checked + .checkbox__box {
+  color: #fff;
+  background: var(--color-control);
+  border-color: var(--color-control);
+}
+
+.checkbox__input:focus-visible + .checkbox__box {
+  box-shadow: var(--shadow-focus);
+}
+
+.checkbox__input:disabled + .checkbox__box {
+  opacity: 0.6;
+}
+
+/* Error state */
+.checkbox-field--error .checkbox__box {
+  border-color: var(--color-error);
+}
+
+.checkbox-field--error .checkbox__input:focus-visible + .checkbox__box {
+  box-shadow: var(--shadow-focus-error);
+}
+
+.checkbox-field__error {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-1);
+  padding-left: 28px;
+  font-size: var(--text-xs);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--color-error-text);
+  animation: fade-up var(--duration-base) var(--ease-out);
+}
+
+.checkbox-field__error svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}

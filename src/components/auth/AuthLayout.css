@@ -1,0 +1,133 @@
+/* ---------- Page shell (shared by Login & Create Account) ---------- */
+.auth-page {
+  min-height: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: var(--space-6);
+  padding: var(--space-6);
+  background: var(--color-bg);
+}
+
+.auth-page__main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--space-4);
+}
+
+/* Keep the illustration in view while a longer form (sign-up) scrolls. */
+.auth-page > .hero {
+  position: sticky;
+  top: var(--space-6);
+  height: calc(100vh - 2 * var(--space-6));
+  min-height: 560px;
+}
+
+/* ---------- Card ---------- */
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  animation: fade-up var(--duration-slow) var(--ease-out) both;
+}
+
+.auth-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.auth-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--color-warning);
+  background: var(--color-warning-soft);
+  border: 1px solid var(--color-warning-border);
+  border-radius: var(--radius-full);
+}
+
+.auth-card__intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.auth-card__title {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.auth-card__subtitle {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+}
+
+.auth-card__legal {
+  font-size: var(--text-xs);
+  line-height: 1.6;
+  text-align: center;
+  color: var(--color-text-subtle);
+}
+
+.auth-card__legal a {
+  font-weight: 600;
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 960px) {
+  .auth-page {
+    grid-template-columns: 1fr;
+    padding: var(--space-4);
+  }
+
+  /* Hide the illustration panel on smaller screens; the form takes focus. */
+  .auth-page > .hero {
+    display: none;
+  }
+
+  .auth-page__main {
+    min-height: calc(100vh - 2 * var(--space-4));
+  }
+
+  .auth-card {
+    max-width: 480px;
+    padding: var(--space-10) var(--space-8);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 520px) {
+  .auth-page {
+    padding: 0;
+    background: var(--color-surface);
+  }
+
+  .auth-page__main {
+    min-height: 100vh;
+    align-items: flex-start;
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .auth-card {
+    gap: var(--space-6);
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+  }
+}
